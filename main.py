@@ -16,10 +16,12 @@ root.withdraw()
 # Open File Path
 fileObjPath = filedialog.askopenfilename()
 
+
 def convert_txt_tts():
-    fileObj = open('output.txt', 'rt', encoding='utf-8').read().replace('\n', ' ')
-    tts = gTTS(fileObj, lang='en')
+    file_obj = open('output.txt', 'rt', encoding='utf-8').read().replace('\n', ' ')
+    tts = gTTS(file_obj, lang='en')
     tts.save('output.mp3')
+
 
 def open_book():
     if fileObjPath.lower().endswith('.epub'):
@@ -31,7 +33,7 @@ def open_book():
             text = soup.text.replace('/n', ' ').strip()
             page_store.append(text)
         with open('output.txt', 'a', encoding='utf-8') as f:
-            f.write(''.join(page_store))
+            f.write(' '.join(page_store))
         return None
     if fileObjPath.lower().endswith('.pdf'):
         book = PdfFileReader(fileObjPath)
@@ -40,9 +42,10 @@ def open_book():
         for page in range(number_of_pages):
             page_store.append(book.pages[page].extract_text())
         with open('output.txt', 'a', encoding='utf-8') as f:
-            f.write(''.join(page_store))
+            f.write(' '.join(page_store))
         return None
     return None
+
 
 def main():
     with open('output.txt', 'w', encoding='utf-8') as f:
