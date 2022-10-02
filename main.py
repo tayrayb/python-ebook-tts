@@ -18,7 +18,7 @@ fileObjPath = filedialog.askopenfilename()
 
 
 def convert_txt_tts():
-    file_obj = open('output.txt', 'rt', encoding='utf-8').read().replace('\n', ' ')
+    file_obj = open('output.txt', 'rt', encoding='utf-8').read().replace('\n', ' ')  # noqa
     tts = gTTS(file_obj, lang='en')
     tts.save('output.mp3')
 
