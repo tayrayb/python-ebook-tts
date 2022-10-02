@@ -4,3 +4,4 @@ pyenv
 output.txt
 .idea
 *.pdf
+.vscode
